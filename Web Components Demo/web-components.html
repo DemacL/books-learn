@@ -1,0 +1,31 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <animal-list></animal-list>
+    <script>
+        class AnimalList extends HTMLElement {
+            constructor() {
+                super();
+                const listEle = document.createElement('ul');// 列表元素
+                const animals = ['elephant', 'shark', 'bird'];// mock数据
+                for (let i = 0; i < animals.length; i++) {
+                    const itemNode = document.createElement('li');// li元素
+                    const contentNode = document.createTextNode(animals[i]);// 文本元素
+                    itemNode.appendChild(contentNode);
+                    listEle.appendChild(itemNode);
+                }
+                this.append(listEle);
+            }
+        }
+        window.customElements.define('animal-list', AnimalList);
+    </script>
+</body>
+
+</html>
