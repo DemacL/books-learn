@@ -1,0 +1,4 @@
+const customIterator = {
+
+  [Symbol.iterator]: {}
+}
