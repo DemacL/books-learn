@@ -1,0 +1,55 @@
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    .left {
+      background: #73DE80;
+      /* 绿色 */
+      opacity: 0.5;
+      border: 3px solid #F31264;
+      width: 200px;
+      height: 200px;
+      float: left;
+    }
+
+    .right {
+      /* 粉色 */
+      background: #EF5BE2;
+      opacity: 0.5;
+      border: 3px solid #F31264;
+      width: 400px;
+      min-height: 100px;
+    }
+
+    .box {
+      background: #888;
+      height: 100%;
+      margin-left: 50px;
+    }
+  </style>
+  <div class='box'>
+    <div class='left'> </div>
+    <div class='right'> </div>
+    <!-- <p>
+      绿色框（'#left'）向左浮动，它创建了一个新BFC，但暂时不讨论它所创建的BFC。由于绿色框浮动了，它脱离了原本normal flow的位置，因此，粉色框（'#right'）就被定位到灰色父元素的左上角（特性3：元素左边与容器左边相接触），与浮动绿色框发生了重叠。
+      同时，由于灰色框（'#box'）并没有创建BFC，因此在计算高度的时候，并没有考虑绿色框的区域（特性6：浮动区域不叠加到BFC区域上），发生了高度坍塌，这也是常见问题之一。
+    </p> -->
+  </div>
+
+
+
+
+</body>
+
+</html>
