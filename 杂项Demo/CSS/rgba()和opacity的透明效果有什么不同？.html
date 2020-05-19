@@ -1,0 +1,61 @@
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>rgba()和opacity的透明效果有什么不同？</title>
+  <style>
+    .box1 {
+      width: 100px;
+      height: 100px;
+      background: lightblue;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0.5;
+    }
+
+    .box1-1 {
+      width: 50px;
+      height: 50px;
+      background: lightcoral;
+    }
+
+    .box2 {
+      margin-top: 20px;
+      width: 100px;
+      height: 100px;
+      background: lightblue;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(173, 216, 230, 0.5);
+    }
+
+    .box2-1 {
+
+      width: 50px;
+      height: 50px;
+      background: lightcoral;
+    }
+  </style>
+</head>
+
+<body>
+  <h3>1.opacity作用于元素，以及元素内的所有内容的透明度</h3>
+  <div class="box1">
+
+    <div class="box1-1">
+
+    </div>
+  </div>
+
+  <hr>
+  <h3>2.rgba()只作用于元素的颜色或其背景色。（设置rgba透明的元素的子元素不会继承透明效果！）</h3>
+  <div class="box2">
+    <div class="box2-1">
+    </div>
+  </div>
+</body>
+
+</html>
