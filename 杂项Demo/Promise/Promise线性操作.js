@@ -21,25 +21,18 @@ const PromiseC = new Promise((resolve, reject) => {
 
 })
 
+const PromiseRandomIndex = new Promise((resolve, reject) => {
+  request.get('http://localhost:3333/random', (err, res) => {
+    resolve(res.body)
+  })
+})
 
-PromiseA.then((data) => console.log(data))
-PromiseB.then((data) => console.log(data))
-PromiseC.then((data) => console.log(data))
 
+// PromiseA.then((data) => console.log(data))
+// PromiseB.then((data) => console.log(data))
+// PromiseC.then((data) => console.log(data))
 
-// Promise.resolve((resolve, reject) => {
-//   PromiseA.then((data1) => {
-//     console.log('A 1', data1)
-//     resolve(PromiseB())
-//   })
-// }).then((data2) => {
-//   console.log('B 2', data2)
-//   resolve(PromiseC())
-// }).then((data3) => {
-//   console.log('C 2', data3)
-
-// })
-
+//  按顺序同步请求
 PromiseC.then((data1) => {
   console.log('3', data1)
   return PromiseB
@@ -50,12 +43,15 @@ PromiseC.then((data1) => {
   console.log('1', data3)
 })
 
-// PromiseA.then((data) => {
-//   console.log('A 1', data)
-//     PromiseB()
-// }).then((data) => {
-//   console.log('B 2', data)
-//     PromiseC()
-// }).then((data) => {
-//   console.log('C 3', data)
-// })
+// 第二次请求需要依赖第一次请求的结果
+PromiseRandomIndex
+.then((index) => {
+  return new Promise((resolve, reject) => {
+    request.get('http://localhost:3333/' + index, (err, res) => {
+      resolve(res.body)
+    })
+  })
+})
+.then((data) => {
+  console.log(data)
+})
