@@ -1,0 +1,129 @@
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>scale</title>
+  <style>
+    .box {
+      width: 100px;
+      height: 100px;
+      background-color: lightblue;
+    }
+
+    .show {
+      transform: scale(1);
+    }
+
+    .hidden {
+      transform: scale(0);
+    }
+
+    .box2 {
+      width: 100px;
+      height: 100px;
+      background-color: lightblue;
+    }
+
+    .show2 {
+      display: block;
+    }
+
+    .hidden2 {
+      display: none;
+    }
+
+    .box3 {
+      width: 100px;
+      height: 100px;
+      background-color: lightblue;
+    }
+  </style>
+</head>
+
+<body>
+  <h3>1.scale</h3>
+  <div class="box show">
+
+  </div>
+
+  <button class="btn">
+    显示
+  </button>
+
+  <h3>2.display</h3>
+  <div class="box2 show2">
+
+  </div>
+
+  <button class="btn2">
+    显示
+  </button>
+
+  <h3>3.loop scale</h3>
+  <div class="box3">
+
+  </div>
+
+  <script>
+    const ele = document.querySelector('.box');
+
+    ele.addEventListener('click', () => {
+      console.log('click');
+      if ([...ele.classList].includes('show')) {
+        ele.classList.remove('show')
+        ele.classList.add('hidden')
+      } else {
+        ele.classList.remove('hidden')
+        ele.classList.add('show')
+      }
+    })
+
+    const btn = document.querySelector('.btn');
+
+    btn.addEventListener('click', () => {
+      if ([...ele.classList].includes('show')) {
+        ele.classList.remove('show')
+        ele.classList.add('hidden')
+      } else {
+        ele.classList.remove('hidden')
+        ele.classList.add('show')
+      }
+    })
+
+
+    const box2 = document.querySelector('.box2');
+
+
+
+    const btn2 = document.querySelector('.btn2');
+
+    btn2.addEventListener('click', () => {
+      if ([...box2.classList].includes('show2')) {
+        box2.classList.remove('show2')
+        box2.classList.add('hidden2')
+      } else {
+        box2.classList.remove('hidden2')
+        box2.classList.add('show2')
+      }
+    })
+
+
+    const box3 = document.querySelector('.box3');
+    const times = 20;  // 从最小到最大所用次数
+    const time = 100; // 间隔时间 ms
+    const asc = Array.from({ length: times }, (_, index) => (index + 1) / times);
+    const dsc = asc.slice(1, asc.length-1).reverse()
+    const loopOrder = asc.concat(dsc)
+    console.log(loopOrder);
+    const len = loopOrder.length;
+    let i = 1;
+
+    setInterval(() => {
+      box3.style.transform = "scale(" + loopOrder[(i++ % len)] + ")";
+    }, time);
+  </script>
+
+</body>
+
+</html>
