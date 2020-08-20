@@ -13,10 +13,12 @@
 
     .show {
       transform: scale(1);
+      transition: transform .4s cubic-bezier(.29, .15, .5, 1.46);
     }
 
     .hidden {
       transform: scale(0);
+      transition: transform .25s cubic-bezier(.25, .1, .25, .1);
     }
 
     .box2 {
